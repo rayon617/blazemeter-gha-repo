@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run BlazeMeter test (BROKEN - reproduces 400)
-        uses: Blazemeter/github-action@v8.5
+        uses: Blazemeter/github-action@v8.7
         with:
           apiKey: ${{ secrets.BLAZEMETER_API_KEY }}
           apiSecret: ${{ secrets.BLAZEMETER_API_SECRET }}
