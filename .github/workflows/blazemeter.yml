@@ -22,7 +22,7 @@ jobs:
 
           # EXACTLY AS YOU CONFIGURED
           inputAllFiles: tests/HomeHub.Api.PerformanceTests/
-          inputStartFile: taurus-load.yml
+          inputStartFile: tests/HomeHub.Api.PerformanceTests/taurus-load.yml
           uploadFileCheck: "true"
 
           testName: "HomeHub API Load Test - Repro"
