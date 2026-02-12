@@ -1,0 +1,33 @@
+name: Reproduce BlazeMeter Error
+
+on:
+  workflow_dispatch:
+
+jobs:
+  reproduce-400-error:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run BlazeMeter test (BROKEN - reproduces 400)
+        uses: Blazemeter/github-action@v8.5
+        with:
+          apiKey: ${{ secrets.BLAZEMETER_API_KEY }}
+          apiSecret: ${{ secrets.BLAZEMETER_API_SECRET }}
+          projectID: ${{ secrets.BLAZEMETER_PROJECT_ID }}
+
+          createTest: "true"
+
+          # EXACTLY AS YOU CONFIGURED
+          inputAllFiles: tests/HomeHub.Api.PerformanceTests/
+          inputStartFile: tests/HomeHub.Api.PerformanceTests/taurus-load.yml
+          uploadFileCheck: "true"
+
+          testName: "HomeHub API Load Test - Repro"
+          continuePipeline: "false"
+          showTailLog: "true"
+
+          # Optional input if you configured it
+          locations: ""
