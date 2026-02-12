@@ -6,7 +6,7 @@ execution:
 
 scenarios:
   my_k6_scn:
-    script: k6/example.js
+    script: example.js
 
 reporting:
   - module: final-stats
