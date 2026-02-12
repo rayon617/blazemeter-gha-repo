@@ -1,0 +1,12 @@
+execution:
+  - executor: k6
+    concurrency: 5
+    hold-for: 30s
+    scenario: my_k6_scn
+
+scenarios:
+  my_k6_scn:
+    script: example.js
+
+reporting:
+  - module: final-stats
