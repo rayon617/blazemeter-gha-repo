@@ -11,4 +11,4 @@ scenarios:
 reporting:
   - module: final-stats
     criteria:
-      - avg-rt>4ms for 1m, stop as failed
+      - avg-rt>4ms, stop as failed
