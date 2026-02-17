@@ -26,11 +26,8 @@ jobs:
           apiKey: ${{ secrets.BLAZEMETER_API_KEY }}
           apiSecret: ${{ secrets.BLAZEMETER_API_SECRET }}
           projectID: ${{ secrets.BLAZEMETER_PROJECT_ID }}
-
           #createTest: "true"
-
-          # EXACTLY AS YOU CONFIGURED
-          testID: 15420757
+          testID: ${{env.testID}}
           inputAllFiles: tests/HomeHub.Api.PerformanceTests/
           inputStartFile: taurus-load.yml
           uploadFileCheck: "true"
@@ -39,6 +36,4 @@ jobs:
           continuePipeline: "false"
           showTailLog: "true"
           
-
-          # Optional input if you configured it
-          locations: "harbour-6836cabb693c1900700699b4"
+          locations: ""
