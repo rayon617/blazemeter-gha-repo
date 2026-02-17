@@ -27,7 +27,7 @@ jobs:
           apiSecret: ${{ secrets.BLAZEMETER_API_SECRET }}
           projectID: ${{ secrets.BLAZEMETER_PROJECT_ID }}
           #createTest: "true"
-          testID: ${{env.testID}}
+          testID: ${{ secret.testID }}
           inputAllFiles: tests/HomeHub.Api.PerformanceTests/
           inputStartFile: taurus-load.yml
           uploadFileCheck: "true"
