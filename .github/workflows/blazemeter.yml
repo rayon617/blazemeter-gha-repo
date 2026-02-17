@@ -37,7 +37,7 @@ jobs:
           testName: "HomeHub API Load Test - Repro"
           continuePipeline: "false"
           showTailLog: "true"
-          ACTIONS_STEP_DEBUG: true
+          
 
           # Optional input if you configured it
           locations: ""
