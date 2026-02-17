@@ -30,7 +30,7 @@ jobs:
           #createTest: "true"
 
           # EXACTLY AS YOU CONFIGURED
-          testID: "15420757"
+          testID: 15420757
           inputAllFiles: tests/HomeHub.Api.PerformanceTests/
           inputStartFile: taurus-load.yml
           uploadFileCheck: "true"
