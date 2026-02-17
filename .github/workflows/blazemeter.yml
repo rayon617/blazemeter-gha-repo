@@ -29,7 +29,7 @@ jobs:
           #createTest: "true"
           testID: "15420757"
           inputAllFiles: tests/HomeHub.Api.PerformanceTests/
-          inputStartFile: taurus-load.yml
+          inputStartFile: tests/HomeHub.Api.PerformanceTests/taurus-load.yml
           uploadFileCheck: "true"
 
           testName: "HomeHub API Load Test - Repro"
