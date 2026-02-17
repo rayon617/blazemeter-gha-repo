@@ -11,14 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Validate Taurus file exists
-        run: |
-          test -f tests/HomeHub.Api.PerformanceTests/taurus-load.yml || {
-            echo "Error: tests/HomeHub.Api.PerformanceTests/taurus-load.yml not found.";
-            echo "Ensure the file exists and path is correct.";
-            exit 1;
-          }
-
+    
 
       - name: Run BlazeMeter test (BROKEN - reproduces 400)
         uses: Blazemeter/github-action@v8.5
@@ -28,8 +21,8 @@ jobs:
           projectID: ${{ secrets.BLAZEMETER_PROJECT_ID }}
           createTest: "true"
           #testID: "15420757"
-          inputAllFiles: tests/HomeHub.Api.PerformanceTests/
-          inputStartFile: taurus-load.yml
+          inputAllFiles: .github/workflows/
+          inputStartFile: .github/workflows/taurus-load.yml
           uploadFileCheck: "true"
 
           testName: "HomeHub API Load Test - Repro"
