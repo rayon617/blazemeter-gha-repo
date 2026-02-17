@@ -19,8 +19,8 @@ jobs:
           apiKey: ${{ secrets.BLAZEMETER_API_KEY }}
           apiSecret: ${{ secrets.BLAZEMETER_API_SECRET }}
           projectID: ${{ secrets.BLAZEMETER_PROJECT_ID }}
-          createTest: "true"
-          #testID: "15420757"
+          #createTest: "true"
+          testID: "15420757"
           inputAllFiles: .github/workflows/
           inputStartFile: .github/workflows/taurus-load.yml
           uploadFileCheck: "true"
