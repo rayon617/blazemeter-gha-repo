@@ -1,7 +1,7 @@
 execution:
   - executor: k6
     concurrency: 5
-    hold-for: 30s
+    hold-for: 3m
     scenario: my_k6_scn
 
 scenarios:
