@@ -1,4 +1,4 @@
-name: Reproduce BlazeMeter Error
+name: failure criteria code
 
 on:
   workflow_dispatch:
@@ -13,19 +13,17 @@ jobs:
 
     
 
-      - name: Run BlazeMeter test (BROKEN - reproduces 400)
+      - name: failure criteria code
         uses: Blazemeter/github-action@v8.5
         with:
           apiKey: ${{ secrets.BLAZEMETER_API_KEY }}
           apiSecret: ${{ secrets.BLAZEMETER_API_SECRET }}
           projectID: ${{ secrets.BLAZEMETER_PROJECT_ID }}
           #createTest: "true"
-          testID: "15420757"
-          inputAllFiles: .github/workflows/
-          inputStartFile: .github/workflows/taurus-load.yml
-          uploadFileCheck: "true"
+          testID: "15423965"
+          
 
-          testName: "HomeHub API Load Test - Repro"
+          testName: "Failure criteria code test"
           continuePipeline: "false"
           showTailLog: "true"
           
