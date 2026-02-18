@@ -11,5 +11,5 @@ scenarios:
 reporting:
   - module: final-stats
     criteria:
-  - failures==0, stop as failed
+  - failures>0%, stop as failed
   
