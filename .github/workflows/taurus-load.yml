@@ -8,8 +8,13 @@ scenarios:
   my_k6_scn:
     script: example.js
 
+
+passfail:
+  - avg-rt>10ms, stop as failed, label: "Avg response time > 10 ms"
+  - failures>10%, stop as failed, label: "Failures > 10%"
+
+
 reporting:
   - module: final-stats
-    criteria:
-  - failures>0%, stop as failed
+
   
