@@ -10,8 +10,8 @@ scenarios:
 
 
 passfail:
-  - avg-rt>10ms, stop as failed, label: "Avg response time > 10 ms"
-  - failures>10%, stop as failed, label: "Failures > 10%"
+  - avg-rt>10ms, stop: true, label: "Avg response time > 10 ms"
+  - failures>0%, stop: true , label: "Failures > 0%"
 
 
 reporting:
