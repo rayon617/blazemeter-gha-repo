@@ -20,7 +20,7 @@ jobs:
           apiSecret: ${{ secrets.BLAZEMETER_API_SECRET }}
           projectID: ${{ secrets.BLAZEMETER_PROJECT_ID }}
           #createTest: "true"
-          testID: "15423965"
+          testID: "15427678"
           
 
           testName: "Failure criteria code test"
