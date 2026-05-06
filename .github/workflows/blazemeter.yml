@@ -11,9 +11,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-    
+      
+      - name: Debug - list files
+        run: |
+          echo "Workspace structure:"
+          pwd
+          echo "Files in repo:"
+          ls -R
 
-      - name: failure criteria code
+      - name: Check for incorrect imports
+        run: |
+          echo "Checking imports..."
+          grep -R "import" .github/workflows/*.js || true
+
+      
+      - name: Detect bad imports (missing ./)
+        run: |
+          echo "Checking for problematic imports..."
+          grep -R 'import .* from "' .github/workflows/*.js | grep -v '\./' || true
+
+
+
+      - name: Blazemeter GHA test
         uses: Blazemeter/github-action@v8.5
         with:
           apiKey: ${{ secrets.BLAZEMETER_API_KEY }}
