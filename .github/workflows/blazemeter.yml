@@ -38,6 +38,7 @@ jobs:
           apiKey: ${{ secrets.BLAZEMETER_API_KEY }}
           apiSecret: ${{ secrets.BLAZEMETER_API_SECRET }}
           projectID: ${{ secrets.BLAZEMETER_PROJECT_ID }}
+          multiTests: "true"
       
           # ✅ CREATE NEW TEST
           createTest: "true"
