@@ -1,19 +1,74 @@
+---
+# Taurus Configuration - Load Test Profile
+# Standard load test
+# Run with: bzt taurus-load.yml
+
+# Common execution settings (YAML anchor - DRY principle)
+.common-execution: &common-execution
+  concurrency: 5
+  hold-for: 60s
+
 execution:
-  - executor: k6
-    concurrency: 5
-    hold-for: 3m
-    scenario: my_k6_scn
+  - <<: *common-execution
+    scenario: is-favourite-endpoint
+
+  - <<: *common-execution
+    scenario: get-application-endpoint
+
+  - <<: *common-execution
+    scenario: get-favourites-endpoint
+
+  - <<: *common-execution
+    scenario: matched-address-endpoint
+
+  - <<: *common-execution
+    scenario: property-data-endpoint
+
+  - <<: *common-execution
+    scenario: get-apptile-endpoint
+
+  - <<: *common-execution
+    scenario: get-pending-consent-process-endpoint
+
+  - <<: *common-execution
+    scenario: get-appointments-endpoint
 
 scenarios:
-  my_k6_scn:
-    script: example.js
+  is-favourite-endpoint:
+    script: is-favourite-property.load.test.js
 
-reporting:
-  - module: passfail
-    criteria:
-     - "avg-rt>10ms, stop as failed, label: Avg response time > 10 ms"
-     - "failures>0%, stop as failed, label: Any failure stops the test"
+  get-application-endpoint:
+    script: get-application.load.test.js
 
+  get-favourites-endpoint:
+    script: get-favourites.load.test.js
 
-  - module: final-stats
-  
+  matched-address-endpoint:
+    script: matched-address.load.test.js
+
+  property-data-endpoint:
+    script: property-data.load.test.js
+
+  get-apptile-endpoint:
+    script: get-apptile.load.test.js
+
+  get-pending-consent-process-endpoint:
+    script: get-pending-consent-process.load.test.js
+
+  get-appointments-endpoint:
+    script: get-appointments.load.test.js
+
+settings:
+  default-executor: k6
+  artifacts-dir: test-results/%Y-%m-%d_%H-%M-%S
+  env:
+    BASE_URL: ${BASE_URL}
+    DP_TOKEN_URL: ${DP_TOKEN_URL}
+    CONCURRENCY: 5
+    HOLD_FOR: 1m
+
+criteria:
+  - avg-rt>1000ms for 30s, stop as failed
+  - fail>5% for 30s, stop as failed
+  - p95>2000ms for 1m, stop as failed
+  - p99>5000ms for 1m, stop as failed
