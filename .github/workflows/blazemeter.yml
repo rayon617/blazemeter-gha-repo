@@ -41,7 +41,7 @@ jobs:
       
           # ✅ CREATE NEW TEST
           createTest: "true"
-          testName: "Failure criteria code test"
+          testName: "Blaze GHA test"
       
           # ✅ Upload ALL files
           inputAllFiles: .github/workflows/
