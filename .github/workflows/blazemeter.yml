@@ -38,12 +38,19 @@ jobs:
           apiKey: ${{ secrets.BLAZEMETER_API_KEY }}
           apiSecret: ${{ secrets.BLAZEMETER_API_SECRET }}
           projectID: ${{ secrets.BLAZEMETER_PROJECT_ID }}
-          #createTest: "true"
-          testID: "15428383"
-          
-
+      
+          # ✅ CREATE NEW TEST
+          createTest: "true"
           testName: "Failure criteria code test"
+      
+          # ✅ Upload ALL files
+          inputAllFiles: .github/workflows/
+          inputStartFile: ".github/workflows/taurus-load.yml"
+          uploadFileCheck: "true"
+      
           continuePipeline: "false"
           showTailLog: "true"
-          
-          locations: ""
+      
+        env:
+          BASE_URL: https://jsonplaceholder.typicode.com
+          DP_TOKEN_URL: https://dummy-token-api.com/oauth/token
