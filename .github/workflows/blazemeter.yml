@@ -1,4 +1,4 @@
-name: failure criteria code
+name: Blazemeter GHA test
 
 on:
   workflow_dispatch:
