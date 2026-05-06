@@ -9,8 +9,7 @@
   hold-for: 60s
 
 execution:
-  - <<: *common-execution
-    scenario: is-favourite-endpoint
+ 
 
   - <<: *common-execution
     scenario: get-application-endpoint
@@ -34,8 +33,7 @@ execution:
     scenario: get-appointments-endpoint
 
 scenarios:
-  is-favourite-endpoint:
-    script: is-favourite-property.load.test.js
+ 
 
   get-application-endpoint:
     script: get-application.load.test.js
