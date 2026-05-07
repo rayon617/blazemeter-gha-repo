@@ -59,6 +59,7 @@ scenarios:
 settings:
   default-executor: k6
   artifacts-dir: test-results/%Y-%m-%d_%H-%M-%S
+  working-dir: . 
   env:
     BASE_URL: ${BASE_URL}
     DP_TOKEN_URL: ${DP_TOKEN_URL}
