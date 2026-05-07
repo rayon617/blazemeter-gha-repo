@@ -1,5 +1,3 @@
-Taurus-yaml-load
-
 ---
 # Taurus Configuration - Load Test Profile
 # Standard load test
@@ -11,8 +9,6 @@ Taurus-yaml-load
   hold-for: 60s
 
 execution:
- 
-
   - <<: *common-execution
     scenario: get-application-endpoint
 
@@ -35,35 +31,46 @@ execution:
     scenario: get-appointments-endpoint
 
 scenarios:
- 
-
   get-application-endpoint:
+    executor: k6
     script: get-application.load.test.js
 
   get-favourites-endpoint:
+    executor: k6
     script: get-favourites.load.test.js
 
   matched-address-endpoint:
+    executor: k6
     script: matched-address.load.test.js
 
   property-data-endpoint:
+    executor: k6
     script: property-data.load.test.js
 
   get-apptile-endpoint:
+    executor: k6
     script: get-apptile.load.test.js
 
   get-pending-consent-process-endpoint:
+    executor: k6
     script: get-pending-consent-process.load.test.js
 
   get-appointments-endpoint:
+    executor: k6
     script: get-appointments.load.test.js
 
 settings:
   default-executor: k6
   artifacts-dir: test-results/%Y-%m-%d_%H-%M-%S
-  working-dir: . 
+  working-dir: .
   env:
-    BASE_URL: ${BASE_URL}
-    DP_TOKEN_URL: ${DP_TOKEN_URL}
+    BASE_URL: https://jsonplaceholder.typicode.com
+    DP_TOKEN_URL: https://dummy-token-api.com/oauth/token
     CONCURRENCY: 5
     HOLD_FOR: 1m
+
+criteria:
+  - avg-rt>1000ms for 30s, stop as failed
+  - fail>5% for 30s, stop as failed
+  - p95>2000ms for 1m, stop as failed
+  - p99>5000ms for 1m, stop as failed
