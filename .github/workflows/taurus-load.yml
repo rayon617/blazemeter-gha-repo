@@ -3,71 +3,46 @@
 # Standard load test
 # Run with: bzt taurus-load.yml
 
-# Common execution settings (YAML anchor - DRY principle)
-.common-execution: &common-execution
-  concurrency: 5
-  hold-for: 60s
-
-execution:
- 
-
-  - <<: *common-execution
-    scenario: get-application-endpoint
-
-  - <<: *common-execution
-    scenario: get-favourites-endpoint
-
-  - <<: *common-execution
-    scenario: matched-address-endpoint
-
-  - <<: *common-execution
-    scenario: property-data-endpoint
-
-  - <<: *common-execution
-    scenario: get-apptile-endpoint
-
-  - <<: *common-execution
-    scenario: get-pending-consent-process-endpoint
-
-  - <<: *common-execution
-    scenario: get-appointments-endpoint
-
-scenarios:
- 
-
-  get-application-endpoint:
-    script: get-application.load.test.js
-
-  get-favourites-endpoint:
-    script: get-favourites.load.test.js
-
-  matched-address-endpoint:
-    script: matched-address.load.test.js
-
-  property-data-endpoint:
-    script: property-data.load.test.js
-
-  get-apptile-endpoint:
-    script: get-apptile.load.test.js
-
-  get-pending-consent-process-endpoint:
-    script: get-pending-consent-process.load.test.js
-
-  get-appointments-endpoint:
-    script: get-appointments.load.test.js
-
 settings:
   default-executor: k6
   artifacts-dir: test-results/%Y-%m-%d_%H-%M-%S
-  working-dir: . 
+  working-dir: .
   env:
-    BASE_URL: ${BASE_URL}
-    DP_TOKEN_URL: ${DP_TOKEN_URL}
-    CONCURRENCY: 5
-    HOLD_FOR: 1m
+    BASE_URL: https://jsonplaceholder.typicode.com
+    DP_TOKEN_URL: https://dummy-token-api.com/oauth/token
 
-criteria:
-  - avg-rt>1000ms for 30s, stop as failed
-  - fail>5% for 30s, stop as failed
-  - p95>2000ms for 1m, stop as failed
-  - p99>5000ms for 1m, stop as failed
+execution:
+  - concurrency: 5
+    hold-for: 60s
+    executor: k6
+    script: get-application.load.test.js
+
+  - concurrency: 5
+    hold-for: 60s
+    executor: k6
+    script: get-favourites.load.test.js
+
+  - concurrency: 5
+    hold-for: 60s
+    executor: k6
+    script: matched-address.load.test.js
+
+  - concurrency: 5
+    hold-for: 60s
+    executor: k6
+    script: property-data.load.test.js
+
+  - concurrency: 5
+    hold-for: 60s
+    executor: k6
+    script: get-apptile.load.test.js
+
+  - concurrency: 5
+    hold-for: 60s
+    executor: k6
+    script: get-pending-consent-process.load.test.js
+
+  - concurrency: 5
+    hold-for: 60s
+    executor: k6
+    script: get-appointments.load.test.js
